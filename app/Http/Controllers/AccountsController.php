@@ -26,10 +26,6 @@ class AccountsController extends Controller
 
     public function users($id)
     {
-//        $data = Question::where('listings_id', $id);
-
-      //  $data = Question::whereListingsId($id)->whereHas('answer')->get();
-
         $data = DB::table('questions')
             ->select('answers.*', 'users.email', 'users.name','users.id')
             ->leftJoin('answers', 'questions.id', '=', 'answers.questions_id')
@@ -38,25 +34,15 @@ class AccountsController extends Controller
             ->groupBy('answers.user_id')
             ->get();
 
-//
-//        $peles = Listing:: where('user_id', Auth::getUser()->id)->get();
-//
         return view('account.users', compact('data', 'id'));
 
 
     }
 
-    public function reply($user,$id)
+    public function reply($user, $listingId)
     {
-//        $question = new Question();
-
-//        $data = $question->getAnswers($user, $id);
-//        echo '<pre>';
-//        foreach($data as $val) {
-//            print_r($val);
-//        }
-
-
-       // return view('account.reply', compact('data'));
+        $question = new Question();
+        $data = $question->getQuestionsAndAnswersPerUser($user, $listingId);
+        return view('account.reply', compact('data'));
     }
 }

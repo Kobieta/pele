@@ -20,20 +20,14 @@ class Question extends Model
         return $this->hasMany(Answer::class, 'questions_id', 'id');
     }
 
-    public function getAnswers($user, $id) {
-//        DB::table('questions')
-//            ->select('answers.*', 'users.email', 'users.name','users.id')
-//            ->leftJoin('answers', 'questions.id', '=', 'answers.questions_id')
-//            ->leftJoin('users', 'answers.user_id', '=', 'users.id')
-//            ->where('questions.listings_id', $id)
-//            ->where('answers.user_id', $user)
-//            ->get();
+    public function getQuestionsAndAnswersPerUser($user, $id)
+    {
+        return $this
+                ->select('questions.asking','answers.reply')
+                ->leftJoin('answers', 'questions.id', '=', 'answers.questions_id')
+                ->where('questions.listings_id', $id)
+                ->where('answers.user_id', $user)
+                ->get();
 
-        return $this->select('answers.*')
-            ->leftJoin('answers', 'questions.id', '=', 'answers.questions_id')
-            ->leftJoin('users', 'answers.user_id', '=', 'users.id')
-            ->where('questions.listings_id', $id)
-            ->where('answers.user_id', $user)
-            ->get();
     }
 }
