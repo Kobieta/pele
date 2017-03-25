@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ListingRequest extends FormRequest
+class AnswersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,13 @@ class ListingRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email'
         ];
     }
 
     public function messages() {
         return [
-            'name.required' => 'Pole "Nazwa Twojej listy pytań" jest wymagane',
-            'email.required' => 'Pole "Twój adres E-mail" jest wymagane.',
+            'email.required' => 'Pole "E-mail" jest wymagane.',
             'email.unique' => 'Podany adres E-mail istnieje już w naszej bazie.',
             'email' => 'Nieprawidłowy email.'
         ];

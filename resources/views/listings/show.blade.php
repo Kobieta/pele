@@ -3,6 +3,17 @@
 @section('content')
 
 {!! Form::open(['route' => 'listings.store', 'class'=>'ownlist']) !!}
+@if($errors->any())
+    <ul class="alert alert-danger">
+        @foreach($errors->all() as $error)
+            <div class="ui negative message">
+                <div class="header">
+                    {{ $error }}
+                </div>
+            </div>
+        @endforeach
+    </ul>
+@endif
 <div class="ui form success ">
     <div class="field">
         <label> E-mail</label>

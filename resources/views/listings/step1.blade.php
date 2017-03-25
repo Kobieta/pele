@@ -75,21 +75,34 @@
         </div>
     </div>
     </br>
+
+    @if(!Auth::check())
+        <div class="ui form">
+            <div class="ui fluid">
+                <div class="field rainbow">
+                    <label>Twój adres e-mail</label>
+                    <input name="email" id="email" class="ui fluid action input" placeholder="E-mail">
+                </div>
+            </div>
+        </div>
+    @else
+        <input type="hidden" name="email" id="email" class="ui fluid action input" placeholder="E-mail" value="{{ Auth::getUser()->email }}">
+    @endif
+
+    </br>
     <button class="positive ui button twelve wide field">dalej</button>
     </br>
     </br>
     {!! Form::close() !!}
 
 
-<script>
+    <script>
         $('.ui.radio.checkbox')
             .checkbox()
             .click(function(){
                 $('#skin') .attr('href',  '/css/' + $(this).data('iden') + '.css' );
                 console.log( $(this).data('iden') );
             });
-
-
     </script>
 {{--<a href="{{route('listings.step2')}}">--}}
 @endsection
