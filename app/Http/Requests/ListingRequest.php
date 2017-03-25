@@ -25,7 +25,7 @@ class ListingRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|unique:users,email'
+            'email' => 'sometimes|required|email|unique:users,email'
         ];
     }
 

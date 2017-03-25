@@ -86,7 +86,7 @@
             </div>
         </div>
     @else
-        <input type="hidden" name="email" id="email" class="ui fluid action input" placeholder="E-mail" value="{{ Auth::getUser()->email }}">
+
     @endif
 
     </br>

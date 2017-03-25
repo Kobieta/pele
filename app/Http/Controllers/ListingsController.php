@@ -72,7 +72,7 @@ class ListingsController extends Controller
             $question = new Question();
             $question->asking = $item;
             $question->photo = 'test';
-            $question->user_id = $user->id;
+            $question->user_id = $userID;
             $question->listings_id = $listing->id;
             $question->save();
         }

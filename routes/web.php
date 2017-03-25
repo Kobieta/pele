@@ -55,6 +55,11 @@ Route::get('/{slug}/{id}', [
     'as' => 'listings.show'
 ]);
 
+// Facebook routes
+Route::get('login-facebook', 'FacebookController@redirectToProvider')->name('login.facebook');
+Route::get('login-facebook/redirect/callback', 'FacebookController@handleProviderCallback');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
