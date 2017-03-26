@@ -11,8 +11,8 @@
     </br>
 
         <div class="ui fluid action input">
-            <input type="text" placeholder="tu bedzie link do gotowej listy">
-            <div class="ui button">wyślij przez Facebook</div>
+            <input id="list_link" type="text" value="{{route('listings.show', [$listing->slug , $listing->id])}}">
+            <div id="facebook_sender" class="ui button">wyślij przez Facebook</div>
             {{--tu bedzie trzeba wybierac do kogo--}}
         </div>
     </br>

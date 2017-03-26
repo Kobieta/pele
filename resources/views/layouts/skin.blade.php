@@ -15,6 +15,9 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/semantic.js"></script>
 
+    <script src="/js/shareDialog.js"></script>
+    <!-- Facebook SDK -->
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
 </head>
 <body>
 
