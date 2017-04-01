@@ -19,8 +19,4 @@
     </div>
     <a href="{{route('listings.step1')}}" class="ui inverted purple button">qwefwqer</a>
 
-    <button id="test">
-        test
-    </button>
-
 @endsection

@@ -32,6 +32,11 @@ Route::post('/store', [
     'as' => 'listings.store'
 ]);
 
+Route::post('/pele-send', [
+    'uses' => 'ListingsController@sendListingToFriend',
+    'as' => 'listings.send'
+]);
+
 
 
 Route::get('/account', [
@@ -50,7 +55,10 @@ Route::get('/account/reply/{user}/{id}', [
     'as' => 'account.reply'
 ]);
 
-Route::get('/{slug}/{id}', [
+
+// 10:57 /{slug}/{id}
+
+Route::get('/listings/{slug}/{id}', [
     'uses' => 'ListingsController@show',
     'as' => 'listings.show'
 ]);

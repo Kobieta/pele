@@ -10,17 +10,23 @@
     </br>
     </br>
 
+        {!! Form::open(['route' => 'listings.send', 'class'=>'ownlist']) !!}
+
         <div class="ui fluid action input">
-            <input id="list_link" type="text" value="{{route('listings.show', [$listing->slug , $listing->id])}}">
+            <input name='list_link' id="list_link" type="text" value="{{route('listings.show', [$listing->slug , $listing->id])}}">
             <div id="facebook_sender" class="ui button">wyślij przez Facebook</div>
             {{--tu bedzie trzeba wybierac do kogo--}}
         </div>
     </br>
+
+
         <div class="ui fluid action input">
-            <input type="text" placeholder="podaj maila odbiorcy, który ma odpowiedzieć na Twoje pytania">
-            <div class="ui button">Wyślij linka do pele </div>
+            <input name='email' type="text" placeholder="podaj maila odbiorcy, który ma odpowiedzieć na Twoje pytania">
+            <button class="ui button">Wyślij link do Pele swojemu znajomemu</button>
             {{--link do kogo--}}
         </div>
+
+        {!! Form::close() !!}
     </br>
         <div class="ui fluid action input">
             <input type="text" value="{{route('listings.show', [$listing->slug , $listing->id])}}">

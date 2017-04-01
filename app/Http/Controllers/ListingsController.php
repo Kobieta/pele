@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AnswersRequest;
+use App\Http\Requests\SendListing;
 use App\Listing;
+use App\Mail\ListingFromFriendMail;
 use App\Mail\NewAccount;
 use App\Question;
 use App\User;
@@ -12,6 +14,8 @@ use App\Http\Requests\ListingRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Answer;
+
+
 
 class ListingsController extends Controller
 {
@@ -46,14 +50,17 @@ class ListingsController extends Controller
             $user = new User();
             $user->name = explode('@', $email)[0];
             $user->email = $email;
-            $user->password = bcrypt('123');
+
+            // password generator
+            $password = $user->generateRandomPassword();
+            $user->password = bcrypt($password);
             $user->save();
 
             // Start session
             Auth::login($user);
 
             // Send information email
-            Mail::to($user->email)->send(new NewAccount($user));
+            Mail::to($user->email)->send(new NewAccount($user, $password));
 
             $userID = $user->id;
         } else { // user is logged in
@@ -101,12 +108,14 @@ class ListingsController extends Controller
         $user = new User();
         $user -> name = explode('@', $email)[0];
         $user -> email = $email;
-        $user -> password = bcrypt('user1');
+
+        $password = $user->generateRandomPassword();
+        $user -> password = bcrypt($password);
         $user -> save();
         $email = $request->input('email');
 
         // Send information email
-        Mail::to($user->email)->send(new NewAccount($user));
+        Mail::to($user->email)->send(new NewAccount($user, $password));
 
         foreach ($request->input('reply') as $key => $item) {
             $reply = new Answer();
@@ -118,5 +127,19 @@ class ListingsController extends Controller
             $reply->save();
         }
        // return redirect()->route('listings.store');
+    }
+
+    public function sendListingToFriend(SendListing $request)
+    {
+        $user = Auth::user();
+
+        if($request->authorize()) {
+            $list_link = $request['list_link'];
+            $email = $request['email'];
+
+            Mail::to($email)->send(new ListingFromFriendMail($user, $list_link));
+        }
+
+        return redirect()->route('listings.step1');
     }
 }
