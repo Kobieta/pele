@@ -10,3 +10,10 @@
 
 Przyjaciel to człowiek, który wie wszystko o tobie i wciąż cię lubi.
 Elbert Hubbard
+
+
+@if( $user->active )
+
+@else
+<p>Twoja konto jest nieaktywne.</p>
+@endif
