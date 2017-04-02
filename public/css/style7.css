@@ -1,0 +1,20 @@
+.test {
+    color: navy;
+}
+.field {
+
+    text-decoration-color: yellow;
+}
+
+.style-name {
+    text: white;
+    color: white;
+
+}
+
+body {
+    background-image: url("../images/polonez_car.png");
+    background-repeat: repeat;
+    background-color: #6666cc;
+
+}

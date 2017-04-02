@@ -23,32 +23,63 @@
 
 <div class="ui form">
     <div class="inline fields">
-        <label for="tlo">Wybierz wygląd Pele-Mele:</label>
+        <label class="style-name" for="tlo">Wybierz wygląd Pele-Mele:</label>
         <div class="field">
             <div class="ui radio checkbox" data-iden="style0">
                 <input type="radio" name="styling" value="0" checked="" tabindex="0" class="hidden">
-                <label>Elegancki</label>
+                <label class="style-name">Papier</label>
             </div>
         </div>
         <div class="field">
             <div class="ui radio checkbox" data-iden="style1">
                 <input type="radio" name="styling" value="1" tabindex="0" class="hidden">
-                <label>Uroczy</label>
+                <label class="style-name">Klasyczny</label>
             </div>
         </div>
         <div class="field">
             <div class="ui radio checkbox" data-iden="style2">
                 <input type="radio" name="styling" value="2" tabindex="0" class="hidden">
-                <label>Klasyczny</label>
+                <label class="style-name">Tęcza</label>
             </div>
         </div>
         <div class="field">
             <div class="ui radio checkbox" data-iden="style3">
                 <input type="radio" name="styling" value="3" tabindex="0" class="hidden">
-                <label>Odjazdowy</label>
+                <label class="style-name">Cegła</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox" data-iden="style4">
+                <input type="radio" name="styling" value="1" tabindex="0" class="hidden">
+                <label class="style-name">Koronka</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox" data-iden="style5">
+                <input type="radio" name="styling" value="1" tabindex="0" class="hidden">
+                <label class="style-name">Kwiatuszki</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox" data-iden="style6">
+                <input type="radio" name="styling" value="1" tabindex="0" class="hidden">
+                <label class="style-name">Wzorek</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox" data-iden="style7">
+                <input type="radio" name="styling" value="1" tabindex="0" class="hidden">
+                <label class="style-name">Polonez</label>
+            </div>
+        </div>
+        <div class="field">
+            <div class="ui radio checkbox" data-iden="style8">
+                <input type="radio" name="styling" value="1" tabindex="0" class="hidden">
+                <label class="style-name">Ptaki</label>
             </div>
         </div>
     </div>
+
 
     {{--<div class="ui buttons">--}}
         {{--<button class="ui red basic button"><a href="{{route('listings.index')}}">wstecz</a></button>--}}
