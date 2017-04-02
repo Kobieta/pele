@@ -13,10 +13,12 @@ $(function() {
 
     $('#facebook_sender').on('click', function() {
 
-        var listLink = 'http://p-bilka.pl';
 
-      // nie działa dla localhosta:
-      // listLink = $('#list_link').val();
+
+
+        var listLink = $('#list_link').val();
+
+        alert(listLink);
 
         FB.ui({
 

@@ -12,6 +12,7 @@
 
     <link id="skin" rel="stylesheet" type="text/css" href="/css/style0.css">
 
+
     <script src="/js/jquery.min.js"></script>
     <script src="/js/semantic.js"></script>
 
@@ -23,7 +24,6 @@
 
 <body>
 
-<h3 class="ui center aligned header">Container</h3>
 <div class="ui container">
         @yield('content')
 </div>

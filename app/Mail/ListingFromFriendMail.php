@@ -44,10 +44,9 @@ class ListingFromFriendMail extends Mailable
      */
     public function build()
     {
-        //$this->to($this->email);
 
         return $this->subject('Twój znajomy wysłał Ci listę pytań')
             ->view('emails.friends.friends_pelemele')
-            ->with(['user' => $this->user, 'email' => $this->list_link]);
+            ->with(['user' => $this->user, 'link' => $this->list_link]);
     }
 }

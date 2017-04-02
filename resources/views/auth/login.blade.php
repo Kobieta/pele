@@ -7,13 +7,27 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-
+                    @if(session('not-active'))
+                        <div class="unactive-account">
+                            <h2>{{ session('not-active') }}</h2>
+                            <p>Konto do którego próbujesz się zalogować nie zostało aktywowane.</p>
+                            <p>Na Twoją skrzynkę odbiorczą wysłaliśmy Ci wiadomość z linkiem aktywującym.</p>
+                            <p>Przeprowadź aktywację i wróć do nas!</p>
+                        </div>
+                    @endif
+                    @if(session('login-failed'))
+                        <div class="failed-login">
+                            <h2>{{ session('login-failed') }}</h2>
+                            <p>Podano niepoprawne dane.</p>
+                        </div>
+                    @endif
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
 
                         @foreach($errors->all() as $error)
                             <li>{{$error}}</li>
                         @endforeach
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

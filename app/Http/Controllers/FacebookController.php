@@ -46,6 +46,7 @@ class FacebookController extends Controller
 
             $user->name = explode('@', $email)[0];
             $user->email = $email;
+
             $user->save();
 
             Auth::Login($user);

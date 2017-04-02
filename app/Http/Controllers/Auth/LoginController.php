@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 
+use App\Mail\AccountActivationMail;
 use App\User;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -12,7 +13,11 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Mail;
 use Socialite;
+
+use Illuminate\Support\Facades\Session;
+
 
 
 class LoginController extends Controller
@@ -43,28 +48,28 @@ class LoginController extends Controller
         $password = $request['password'];
 
 
-
-        $user = User::where('email', $email)->first();
-
-        if($user->active) {
-
-        }
-
         $rules = [
             'email' => $email,
-            'password' => $password,
-            'active' => 1
+            'password' => $password
         ];
 
-
         if(Auth::attempt($rules)) {
+            $user = User::where('email', $email)->first();
+            if($user->active) {
+                return redirect()->to('/login');
+            } else {
+                Mail::to($user->email)->send(new AccountActivationMail($user->email));
+                Auth::logout();
+                return redirect()->to('/login')->with('not-active', 'Konto nieaktywne');
+            }
 
+        } else {
 
-            //return redirect()->to('/login');
-
+            return redirect()->back()->with('login-failed', 'Logowanie nieudane');
         }
 
-       // return redirect()->back();
+
+
     }
 
     /**

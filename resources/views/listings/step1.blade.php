@@ -1,6 +1,9 @@
 @extends('layouts.skin')
 
 @section('content')
+    <header>
+        <h2>Tworzysz nową listę pytań</h2>
+    </header>
     {!! Form::open(['route' => 'listings.step2', 'class'=>'ownlist']) !!}
 {{--<form method="post" action="{{route('listings.step2')}}" class="ownlist">--}}
 <div class="ui form">

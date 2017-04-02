@@ -1,0 +1,15 @@
+.unactive-account,
+.failed-login {
+    text-align: center;
+    color: #bb362e;
+}
+.unactive-account p {
+    color: #bb362e;
+}
+.unactive-account p:last-child {
+    color: #25bb2e;
+}
+
+.failed-login p {
+    color: #bb362e;
+}

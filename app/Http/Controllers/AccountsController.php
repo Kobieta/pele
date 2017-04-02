@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Answer;
 use App\Listing;
 use App\Question;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -45,4 +46,5 @@ class AccountsController extends Controller
         $data = $question->getQuestionsAndAnswersPerUser($user, $listingId);
         return view('account.reply', compact('data'));
     }
+
 }
