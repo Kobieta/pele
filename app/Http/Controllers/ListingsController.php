@@ -135,9 +135,15 @@ class ListingsController extends Controller
 
         if($request->authorize()) {
             $list_link = $request['list_link'];
-            $email = $request['email'];
+            $friend_email = $request['email'];
 
-            Mail::to($email)->send(new ListingFromFriendMail($user, $list_link));
+            if($friend_email != $user->email) {
+                try {
+                    Mail::send(new ListingFromFriendMail($user, $list_link, $friend_email));
+                } catch(\Exception $e) {
+
+                }
+            }
         }
 
         return redirect()->route('listings.step1');

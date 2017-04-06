@@ -67,9 +67,6 @@ class LoginController extends Controller
 
             return redirect()->back()->with('login-failed', 'Logowanie nieudane');
         }
-
-
-
     }
 
     /**
