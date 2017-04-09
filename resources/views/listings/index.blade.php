@@ -1,7 +1,7 @@
 @extends('layouts.skin')
 
 @section('top-info')
-    Witaj w serwisie Pelemele!
+    Witaj w aplikacji Pelemele!
 @endsection
 
 @section('content')
@@ -22,6 +22,49 @@
         <div class="hidden content"><a href="#">Utwórz nową listę</a></div>
     </div>
     -->
+    <div class="eight wide column front_page_info">
+        <header>
+            <h2>Rozpocznij przygodę z <span>Pelemele</span>!</h2>
+        </header>
+    </div>
+    <div class="ui stackable centered grid">
+        <div class="eight wide column">
+            <div class="ui stackable four column centered grid">
+                <img class="profile" src="/images/profile.png">
+                <div class="column_button">
+                    <a class="ui inverted blue button interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
+                </div>
+                <div class="column_button">
+                    <a class="ui inverted purple button interface_button" href="{{ route('login') }}">Zaloguj się</a>
+                </div>
+                <div class="column_button">
+                    <a class="ui inverted violet button interface_button" href="{{ route('register') }}">Zarejestruj</a>
+                </div>
+            </div>
+        </div>
+        <div class="eight wide column centered aligned front_page_info">
+
+            <div class="front_page_dsc">
+                <p>,,Przyjaciel to człowiek, który wie wszystko o tobie i wciąż cię lubi.''</p>
+                <h4>~Elbert Hubbard</h4>
+            </div>
+
+            <h4>Zadaj ciekawe pytania swoim znajomym, aby ich lepiej poznać i zobaczyć, co lubią.</h4>
+
+            <p>
+                Możesz skorzystać z dostępnej listy niezwykle ciekawych pytań, lub zadać oryginalne, własne.</p>
+                Wymyślając je, miej szacunek do innych!
+
+                Odpowiedzi będą widoczne tylko dla Ciebie!
+            </p>
+            <p>Pelemele to bardzo osobista forma kontaktu. Nie udostępniaj nikomu swojego hasła.</p>
+
+            <h3>Bawcie się dobrze!</h3>
+
+        </div>
+    </div>
+
+    <!--
 
     <div class="ui stackable four column centered grid">
         <div class="ui centered column centered aligned grid">
@@ -32,13 +75,16 @@
 
     <div class="ui four column centered grid">
         <div class="column_button">
-            <a class="ui inverted blue button interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
+            <a class="ui inverted blue button interface_button" href="">Stwórz nowe Pelemele</a>
         </div>
         <div class="column_button">
-            <a class="ui inverted purple button interface_button" href="{{ route('login') }}">Zaloguj się</a>
+            <a class="ui inverted purple button interface_button" href="">Zaloguj się</a>
         </div>
         <div class="column_button">
-            <a class="ui inverted violet button interface_button" href="{{ route('register') }}">Zarejestruj</a>
+            <a class="ui inverted violet button interface_button" href="">Zarejestruj</a>
         </div>
     </div>
+
+-->
+
 @endsection

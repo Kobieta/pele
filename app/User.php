@@ -7,6 +7,10 @@ use App\Notifications\ResetUserPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Mail\AccountActivationMail;
+
+use Illuminate\Support\Facades\Mail;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -54,10 +58,22 @@ class User extends Authenticatable
      *
      * @param string $token
      *
+     * @return void
      */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetUserPassword($token));
+    }
+
+
+    /**
+     * Sends email to user with generated account activation link
+     *
+     * @return void
+     */
+    public function sendAccountActivationEmail()
+    {
+        Mail::to($this->email)->send(new AccountActivationMail($this->email));
     }
 
 }

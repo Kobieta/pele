@@ -65,9 +65,6 @@ class AccountsController extends Controller
 
         $new_name = $request['name'];
 
-        filter_var($new_name,FILTER_SANITIZE_STRING);
-
-
         $user->name = $new_name;
         $user->update();
 

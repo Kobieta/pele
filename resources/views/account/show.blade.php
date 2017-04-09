@@ -33,6 +33,10 @@
             <div class="column_button">
                 <a class="ui inverted purple button interface_button" href="{{ url('/password/reset') }}">Zmień hasło</a>
             </div>
+
+            @if($user->active == 0)
+                Twoje konto jest nieaktywne!
+            @endif
         </div>
 
 

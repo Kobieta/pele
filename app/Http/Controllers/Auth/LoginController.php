@@ -58,8 +58,11 @@ class LoginController extends Controller
             if($user->active) {
                 return redirect()->to('/login');
             } else {
-                Mail::to($user->email)->send(new AccountActivationMail($user->email));
+
                 Auth::logout();
+
+                $user->sendAccountActivationEmail();
+
                 return redirect()->to('/login')->with('not-active', 'Konto nieaktywne');
             }
 
@@ -74,7 +77,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/account';
 
     /**
      * Create a new controller instance.

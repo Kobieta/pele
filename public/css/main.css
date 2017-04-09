@@ -2,6 +2,7 @@
 .failed-login {
     text-align: center;
     color: #bb362e;
+    margin: 20px auto;
 }
 .unactive-account p {
     color: #bb362e;
@@ -56,21 +57,29 @@ img.profile {
 }
 
 .interface_button {
-    padding: 20px 40px !important;
+    /*
+    padding: 20px 40px !important;    */
     min-width: 220px;
+
+}
+
+.app_form {
+    margin: 15px auto;
+}
+
+.app_form label {
+    letter-spacing: 2px;
+    color: #644665 !important;
+    font-weight: bold;
+}
+
+.app_form_button {
+    min-width: 225px;
 }
 
 .sticky_interface_button {
     padding: 8px 20px !important;
     min-width: 160px;
-}
-
-.sticky {
-    position: fixed;
-    bottom: -150px;
-    background: #A6FFEC;
-    width: 100%;
-    height: 200px;
 }
 
 .small_device_buttons div.ui {
@@ -88,6 +97,15 @@ img.profile {
     opacity: 0;
 }
 
+.sticky {
+    position: fixed;
+    bottom: -150px;
+    background: #A6FFEC;
+    width: 100%;
+    height: 200px;
+    z-index: 500;
+}
+
 #menuActivator {
     background: url('../images/btn.png');
     min-width: 50px;
@@ -99,7 +117,7 @@ img.profile {
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 200;
+    z-index: 500;
 }
 
 #menuActivator:hover {
@@ -107,7 +125,7 @@ img.profile {
 }
 
 .margin_container {
-    margin: 90px auto 50px auto;
+    margin: 120px auto 50px auto;
 }
 
 .login_info span {
@@ -123,11 +141,47 @@ img.profile {
     background-color: #B083B2;
     position: absolute;
     top: 0;
+    line-height: normal;
     text-align: center;
     font-weight: 900;
-    font-size: 18px;
+    font-size: 25px;
     color: #FFF;
     text-transform: uppercase;
+}
+
+.front_page_info {
+    color: #3c5358;
+    margin-top: 40px;
+}
+
+.front_page_info h2 {
+    text-align: center;
+}
+
+.front_page_info h2 {
+    font-size: 50px;
+    letter-spacing: 1px;
+}
+
+.front_page_info span {
+    color: #8f7d90;
+}
+
+.front_page_dsc {
+    width: 100%;
+    margin: 30px auto;
+}
+
+.front_page_dsc p {
+    text-align: right;
+    font-style: italic;
+    font-size: 22px;
+    padding-left: 50px;
+}
+
+.front_page_dsc h4 {
+    text-align: right;
+    font-weight: bold;
 }
 
 @media screen and (min-width: 992px) {

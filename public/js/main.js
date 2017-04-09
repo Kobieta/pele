@@ -4,7 +4,9 @@ $(function() {
         $('.username_change').slideToggle(50);
     });
 
-
+    $('.ui.checkbox')
+        .checkbox()
+    ;
     var activeMenu = false;
 
     $('#menuActivator').on('click', function() {
@@ -16,7 +18,7 @@ $(function() {
             $( ".sticky" ).animate({
                 opacity: 0.88,
                 bottom: '-150px'
-            }, 100, function() {
+            }, 300, function() {
 
                 $(this).css('opacity', '1');
 
@@ -29,7 +31,7 @@ $(function() {
             $( ".sticky" ).animate({
                 opacity: 0.88,
                 bottom: "0"
-            }, 100, function() {
+            }, 300, function() {
 
                 $(this).css('opacity', '1');
 
