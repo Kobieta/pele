@@ -39,18 +39,32 @@ Route::post('/pele-send', [
 
 
 
+/**
+ * Account routes
+ */
+
 Route::get('/account', [
     'uses' => 'AccountsController@show',
     'as' => 'account.show'
 ]);
 
-Route::get('/account/users/{id}', [
+Route::post('/account/name', [
+    'uses' => 'AccountsController@changeUsername',
+    'as' => 'account.name'
+]);
+
+Route::get('/account/listings', [
+    'uses' => 'AccountsController@listings',
+    'as' => 'account.listings'
+]);
+
+Route::get('/account/listing/users/{id}', [
     'uses' => 'AccountsController@users',
     'as' => 'account.users'
 ]);
 
 
-Route::get('/account/reply/{user}/{id}', [
+Route::get('/account/listing/reply/{user}/{id}', [
     'uses' => 'AccountsController@reply',
     'as' => 'account.reply'
 ]);
@@ -76,7 +90,6 @@ Route::get('/account/activation/activation-failed', 'ActivationController@failed
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
 
 Auth::routes();
 

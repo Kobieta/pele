@@ -32,7 +32,7 @@
             <input type="text" value="{{route('listings.show', [$listing->slug , $listing->id])}}">
             <div class="ui button">kopiuj link do swojej listy</div>
         </div>
-        {{--<button class="ui green basic button"><a href="{{route('listings.step3')}}">dalej</a></button>--}}
+        <a class="ui inverted blue button" href="{{ route('account.show') }}">Przejdź do mojego profilu</a>
     </div>
 
 @endsection

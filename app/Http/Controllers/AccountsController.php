@@ -19,10 +19,17 @@ class AccountsController extends Controller
 
     public function show(Request $request)
     {
-    $peles = Listing:: where('user_id', Auth::getUser()->id)->get();
+        $user = Auth::user();
+
+        return view('account.show', compact('user'));
+    }
 
 
-    return view('account.show', compact('peles'));
+    public function listings(Request $request)
+    {
+        $peles = Listing:: where('user_id', Auth::getUser()->id)->get();
+
+        return view('account.listings', compact('peles'));
     }
 
     public function users($id)
@@ -45,6 +52,26 @@ class AccountsController extends Controller
         $question = new Question();
         $data = $question->getQuestionsAndAnswersPerUser($user, $listingId);
         return view('account.reply', compact('data'));
+    }
+
+
+    /**
+     * Changes user's name
+     *
+     */
+    public function changeUsername(Request $request)
+    {
+        $user = Auth::user();
+
+        $new_name = $request['name'];
+
+        filter_var($new_name,FILTER_SANITIZE_STRING);
+
+
+        $user->name = $new_name;
+        $user->update();
+
+        return redirect()->back();
     }
 
 }

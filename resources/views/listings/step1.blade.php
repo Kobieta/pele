@@ -1,9 +1,12 @@
 @extends('layouts.skin')
 
+
+@section('top-info')
+    Tworzysz nową listę pytań
+@endsection
+
 @section('content')
-    <header>
-        <h2>Tworzysz nową listę pytań</h2>
-    </header>
+
     {!! Form::open(['route' => 'listings.step2', 'class'=>'ownlist']) !!}
 {{--<form method="post" action="{{route('listings.step2')}}" class="ownlist">--}}
 <div class="ui form">
@@ -108,7 +111,6 @@
          @endforeach
         </div>
     </div>
-    </br>
 
     @if(!Auth::check())
         <div class="ui form">
@@ -119,17 +121,14 @@
                 </div>
             </div>
         </div>
-    @else
-
     @endif
 
-    </br>
+    <br>
     <button class="positive ui button twelve wide field">dalej</button>
-    </br>
-    </br>
+
     {!! Form::close() !!}
-
-
+    <br>
+</div>
     <script>
         $('.ui.radio.checkbox')
             .checkbox()
@@ -138,5 +137,4 @@
                 console.log( $(this).data('iden') );
             });
     </script>
-{{--<a href="{{route('listings.step2')}}">--}}
 @endsection
