@@ -9,6 +9,8 @@ use App\Mail\ListingFromFriendMail;
 use App\Mail\NewAccount;
 use App\Question;
 use App\User;
+use Illuminate\Support\Facades\Session;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Http\Requests\ListingRequest;
 use Illuminate\Support\Facades\Auth;
@@ -67,7 +69,6 @@ class ListingsController extends Controller
             $userID = Auth::getUser()->id;
         }
 
-        echo $request->input('name');
         $listing = new \App\Listing();
         $listing->user_id = $userID;
         $listing->name = $request->input('name');
@@ -129,23 +130,55 @@ class ListingsController extends Controller
        // return redirect()->route('listings.store');
     }
 
-    public function sendListingToFriend(SendListing $request)
+
+    /**
+     * @param SendListing $request
+     * @return response
+     */
+    public function sendListingToFriend(Request $request)
     {
         $user = Auth::user();
 
-        if($request->authorize()) {
-            $list_link = $request['list_link'];
-            $friend_email = $request['email'];
+        $friend_email = $request['email'];
+        $list_link = $request['list_link'];
+
+        if(Session::token() == $request['_token']) {
 
             if($friend_email != $user->email) {
-                try {
-                    Mail::send(new ListingFromFriendMail($user, $list_link, $friend_email));
-                } catch(\Exception $e) {
 
-                }
+                Mail::send(new ListingFromFriendMail($user, $list_link, $friend_email));
+                return response()->json([
+                    'status' => 'success',
+                    'code' => 1,
+                    'msg' => 'Wysłano!',
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'error',
+                    'code' => 0,
+                    'msg' => 'Nie możesz wysłać emaila do siebie.',
+                ]);
             }
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Nieautoryzowany dostęp.',
+            ]);
         }
 
-        return redirect()->route('listings.step1');
+
+
+
+    /*
+        $friend_email = $request
+
+        if($friend_email != $user->email) {
+            try {
+
+            } catch(\Exception $e) {
+
+            }
+        }
+    */
     }
 }

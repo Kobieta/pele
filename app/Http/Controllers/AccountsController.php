@@ -27,7 +27,7 @@ class AccountsController extends Controller
 
     public function listings(Request $request)
     {
-        $peles = Listing:: where('user_id', Auth::getUser()->id)->get();
+        $peles = Listing::where('user_id', Auth::getUser()->id)->get();
 
         return view('account.listings', compact('peles'));
     }

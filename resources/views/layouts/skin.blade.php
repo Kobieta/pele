@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <!-- Site Properties -->
-    <title>Responsive Elements - Semantic</title>
+    <title>@yield('title')</title>
 
 
 
@@ -36,7 +35,7 @@
 </div>
 
 
-    @include('layouts.sticky_menu')
+@include('layouts.sticky_menu')
 
 
 </body>

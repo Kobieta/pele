@@ -1,5 +1,9 @@
 @extends('layouts.skin')
 
+@section('title')
+    Pelemele - start
+@endsection
+
 @section('top-info')
     Witaj w aplikacji Pelemele!
 @endsection

@@ -25,9 +25,11 @@
             <div class="ui centered grid">
                 {!! Form::open(['route' => 'logout']) !!}
                 <button class="ui mini inverted purple button sticky_interface_button" type="submit">Wyloguj</button>
+                {{ csrf_field() }}
                 {!! Form::close() !!}
             </div>
             <div class="ui centered grid login_info">Zalogowany jako: <span>{{ Auth::user()->name }}</span></div>
+
         @endif
 
     </div>

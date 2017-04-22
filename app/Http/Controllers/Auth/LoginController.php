@@ -3,19 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-
 use App\Mail\AccountActivationMail;
 use App\User;
-
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\Mail;
 use Socialite;
-
 use Illuminate\Support\Facades\Session;
 
 
@@ -38,7 +32,7 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * @override AuthenticateUsers\login
+     * @overwrite AuthenticateUsers\login
      * @param Request $request
      * @return mixed
      */

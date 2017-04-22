@@ -8,28 +8,30 @@
 @section('content')
 
     {!! Form::open(['route' => 'listings.step2', 'class'=>'ownlist']) !!}
-{{--<form method="post" action="{{route('listings.step2')}}" class="ownlist">--}}
-<div class="ui form">
-    <div class="field">
-        @if($errors->any())
-            <ul class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <div class="ui negative message">
-                        <div class="header">
-                            {{ $error }}
+    <div class="ui form">
+        <div class="field step_1_field">
+            @if($errors->any())
+                <ul class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <div class="ui negative message">
+                            <div class="header">
+                                {{ $error }}
+                            </div>
                         </div>
-                    </div>
-                @endforeach
-            </ul>
-        @endif
-        <label class="title">Nazwa Twojej listy pytań</label>
-       <input type="text" name="name">
+                    @endforeach
+                </ul>
+            @endif
+            <label class="title">Nazwa Twojej listy pytań</label>
+           <input type="text" name="name">
+        </div>
     </div>
-</div>
+
+
+
+    <label class="style-name" for="tlo">Wygląd Pelemele:</label>
 
 <div class="ui form">
     <div class="inline fields">
-        <label class="style-name" for="tlo">Wybierz wygląd Pele-Mele:</label>
         <div class="field">
             <div class="ui radio checkbox" data-iden="style0">
                 <input type="radio" name="styling" value="0" checked="" tabindex="0" class="hidden">
@@ -95,17 +97,11 @@
         <div class="ui form">
         @foreach($questions as $question)
             <div>
-                <label>{{$question['label']}}</label>
                 <div class="ui fluid">
-                    <div class="field rainbow">
+                    <div class="field rainbow step_1_field">
+                        <label>Pytanie {{$question['label']}}</label>
                         <input class="ui fluid action input" type="text" name="asking[]" value="{{$question['pytanie']}}">
                     </div>
-                    {{--<div class="four wide field">--}}
-                        {{--<div class="ui toggle checkbox">--}}
-                            {{--<input type="checkbox" name="public">--}}
-                            {{--<label>Zapisz to pytanie</label>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
          @endforeach
@@ -114,7 +110,7 @@
 
     @if(!Auth::check())
         <div class="ui form">
-            <div class="ui fluid">
+            <div class="ui fluid step_1_field">
                 <div class="field rainbow">
                     <label>Twój adres e-mail</label>
                     <input name="email" id="email" class="ui fluid action input" placeholder="E-mail">
@@ -122,13 +118,16 @@
             </div>
         </div>
     @endif
-
-    <br>
-    <button class="positive ui button twelve wide field">dalej</button>
-
+    <div class="ui form">
+        <div class="ui fluid step_1_field">
+            <p>Pytania gotowe? Przejdź dalej!</p>
+            <button class="positive ui button fluid field" type="submit">dalej</button>
+        </div>
+    </div>
     {!! Form::close() !!}
     <br>
 </div>
+
     <script>
         $('.ui.radio.checkbox')
             .checkbox()

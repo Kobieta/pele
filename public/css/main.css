@@ -92,24 +92,26 @@ img.profile {
 
 .small_device_fluid {
     width: 100%;
-    height: 50px;
+    height: 30px;
     background: #8bd6c6;
     opacity: 0;
 }
 
 .sticky {
+    border-top: 4px solid rgb(139, 214, 198);
     position: fixed;
-    bottom: -150px;
+    bottom: -220px;
     background: #A6FFEC;
     width: 100%;
-    height: 200px;
+    height: 250px;
     z-index: 500;
 }
 
+/* Buttons sticky */
 #menuActivator {
     background: url('../images/btn.png');
     min-width: 50px;
-    min-height: 50px;
+    min-height: 30px;
     background-position: 50% 50%;
     background-size: 80%;
     background-repeat:no-repeat;
@@ -118,10 +120,29 @@ img.profile {
     right: 0;
     top: 0;
     z-index: 500;
+    border-bottom-left-radius: 7px;
 }
 
 #menuActivator:hover {
     cursor: pointer;
+}
+
+#home {
+    background: url('../images/home.png');
+    min-width: 50px;
+    min-height: 50px;
+    background-position: 50% 50%;
+    background-size: 80%;
+    background-repeat:no-repeat;
+    border: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 500;
+}
+
+#home:hover {
+    cursor: pointer
 }
 
 .margin_container {
@@ -184,6 +205,57 @@ img.profile {
     font-weight: bold;
 }
 
+#email_sender_errors {
+    min-height: 50px;
+    font-size: 18px;
+    color: #bb362e;
+    /* min-height: 50px; */
+    margin-top: 5px;
+    padding: 5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.email_sender_succes {
+    color: #008000 !important;
+}
+
+.half_width_button {
+    width: 49.8%;
+    margin: auto 0!important;
+}
+
+.fb_button {
+    color: #f8fbff !important;
+    background: #2376d1 !important;
+}
+.cpy_button {
+    color: #fff !important;
+    background: #b083b2 !important;
+}
+
+.step_1_field label {
+    margin-top: 20px!important;
+    background: #5a829f;
+    font-size: 18px !important;
+    margin-bottom: 0 !important;
+    padding: 5px 5px 5px 15px;
+    color: #FFFFFF!important;
+    border-radius: 3px;
+}
+
+.step_1_field input[type=text] {
+    color: #3a5264 !important;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.step_1_field p {
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    text-align: center;
+}
+
 @media screen and (min-width: 992px) {
 
     .sticky,
@@ -191,4 +263,10 @@ img.profile {
         display: none;
     }
 
+}
+
+@media screen and (max-width: 767px) {
+    .half_width_button {
+        width: 100%;
+    }
 }
