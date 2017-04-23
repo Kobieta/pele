@@ -14,28 +14,33 @@
         </div>
 
 
-        <div class="ui four column centered grid">
+        <div class="ui four column centered grid buttons_overwrite">
 
             <div class="column_button">
-                <a class="ui inverted purple button interface_button" href="{{ route('account.listings') }}">Moje listy pytań</a>
+                <a class="ui purple button interface_button" href="{{ route('account.listings') }}">Moje listy pytań</a>
             </div>
             <div class="column_button">
-                <button id="usernameChanger" class="ui inverted purple button interface_button">Zmień nick</button>
+                <button id="usernameChanger" class="ui blue button interface_button">Zmień nick</button>
                 {!! Form::open(['route' => 'account.name', 'class'=>'username_change']) !!}
 
                     <input type="text" name="name" value="{{ $user->name }}"><br>
-                    <button class="ui inverted purple button" type="submit">Zapisz</button>
+                    <button class="ui blue button" type="submit">Zapisz</button>
                 {!! Form::close() !!}
 
             </div>
 
 
             <div class="column_button">
-                <a class="ui inverted purple button interface_button" href="{{ url('/password/reset') }}">Zmień hasło</a>
+                <a class="ui violet button interface_button" href="{{ url('/password/reset') }}">Zmień hasło</a>
             </div>
 
             @if($user->active == 0)
-                Twoje konto jest nieaktywne!
+                {!! Form::open(['route' => 'account.activation']) !!}
+                    Twoje konto jest nieaktywne!
+                    <div class="column_button">
+                        <button type="submit" class="ui blue button interface_button">Wyślij link aktywujący</button>
+                    </div>
+                {!! Form::close() !!}
             @endif
         </div>
 

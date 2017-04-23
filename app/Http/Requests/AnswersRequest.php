@@ -30,8 +30,8 @@ class AnswersRequest extends FormRequest
 
     public function messages() {
         return [
-            'email.required' => 'Pole "E-mail" jest wymagane.',
-            'email.unique' => 'Podany adres E-mail istnieje już w naszej bazie.',
+            'email.required' => 'Wprowadź email.',
+            'email.unique' => 'Użytkownik o takim adresie email już istnieje.',
             'email' => 'Nieprawidłowy email.'
         ];
     }

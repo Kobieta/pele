@@ -58,8 +58,8 @@
             </div>
 
 
-            <div class="field">
-                <button type="submit" class="ui button inverted purple app_form_button">Reset Password</button>
+            <div class="field buttons_overwrite">
+                <button type="submit" class="ui button purple app_form_button">Reset Password</button>
             </div>
 
     </form>

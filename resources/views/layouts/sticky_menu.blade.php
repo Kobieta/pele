@@ -2,29 +2,29 @@
     <div class="small_device_fluid"></div>
     <div id="menuActivator">
     </div>
-    <div class="ui container small_device_buttons">
+    <div class="ui container small_device_buttons buttons_overwrite">
 
         @if(!Auth::check())
             <div class="ui centered grid first">
-                <a class="ui mini inverted purple button sticky_interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
+                <a class="ui mini purple button sticky_interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
             </div>
             <div class="ui centered grid">
-                <a class="ui mini inverted violet button sticky_interface_button" href="{{ route('login') }}">Zaloguj się</a>
+                <a class="ui mini blue button sticky_interface_button" href="{{ route('login') }}">Zaloguj się</a>
             </div>
             <div class="ui centered grid">
-                <a class="ui mini inverted purple button sticky_interface_button" href="{{ route('register') }}">Zarejestruj</a>
+                <a class="ui mini violet button sticky_interface_button" href="{{ route('register') }}">Zarejestruj</a>
             </div>
             <div class="ui centered grid login_info">Nie jesteś zalogowany.</div>
         @else
             <div class="ui centered grid first">
-                <a class="ui mini inverted purple button sticky_interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
+                <a class="ui mini purple button sticky_interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
             </div>
             <div class="ui centered grid">
-                <a class="ui mini inverted violet button sticky_interface_button" href="{{ route('account.show') }}">Moje konto</a>
+                <a class="ui mini blue button sticky_interface_button" href="{{ route('account.show') }}">Moje konto</a>
             </div>
             <div class="ui centered grid">
                 {!! Form::open(['route' => 'logout']) !!}
-                <button class="ui mini inverted purple button sticky_interface_button" type="submit">Wyloguj</button>
+                <button class="ui mini violet button sticky_interface_button" type="submit">Wyloguj</button>
                 {{ csrf_field() }}
                 {!! Form::close() !!}
             </div>

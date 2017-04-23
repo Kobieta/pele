@@ -29,9 +29,6 @@ class FacebookController extends Controller
     {
         $facebookUser = Socialite::driver('facebook')->user();
 
-
-
-
         $user = User::where('email', $facebookUser->getEmail())->first();
 
         if($user) { // User found, logging in
@@ -46,6 +43,7 @@ class FacebookController extends Controller
 
             $user->name = explode('@', $email)[0];
             $user->email = $email;
+            $user->active = 1;
 
             $user->save();
 

@@ -28,6 +28,5 @@ class Question extends Model
                 ->where('questions.listings_id', $id)
                 ->where('answers.user_id', $user)
                 ->get();
-
     }
 }

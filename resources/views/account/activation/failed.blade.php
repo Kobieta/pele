@@ -1,5 +1,8 @@
 @extends('layouts.skin')
 
+@section('top-info')
+    Konto nie zostało aktywowane
+@endsection
 
 @section('content')
 

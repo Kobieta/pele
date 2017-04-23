@@ -10,7 +10,8 @@
         "laravel/framework": "5.4.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4"
+        "laravelcollective/html": "^5.4",
+        "wangaz/laravel-semantic-ui-css": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -43,8 +44,12 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan optimize",
+            "mkdir -p public/assets",
+            "ln -sf ../../vendor/wangaz/laravel-semantic-ui-css/src/assets/jquery public/assets/jquery",
+            "ln -sf ../../vendor/wangaz/laravel-semantic-ui-css/src/assets/semantic-ui public/assets/semantic-ui"
         ]
+
     },
     "config": {
         "preferred-install": "dist",

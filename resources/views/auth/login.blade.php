@@ -69,16 +69,16 @@
             </div>
 
 
-            <div class="column_button">
+            <div class="column_button buttons_overwrite">
                 <div class="field">
-                    <button type="submit" class="ui button inverted blue app_form_button">Zaloguj</button>
+                    <button type="submit" class="ui button blue app_form_button">Zaloguj</button>
                 </div>
                 <div class="column_button">
-                    <a class="ui button inverted purple app_form_button" href="{{ route('login.facebook') }}">Zaloguj za pomocą facebooka</a>
+                    <a class="ui button purple app_form_button" href="{{ route('login.facebook') }}">Zaloguj za pomocą facebooka</a>
                 </div>
 
                 <div class="column_button">
-                    <a class="ui button inverted purple app_form_button" href="{{ url('/password/reset') }}">Zapomniałeś hasła?</a>
+                    <a class="ui button violet app_form_button" href="{{ url('/password/reset') }}">Zapomniałeś hasła?</a>
                 </div>
 
             </div>

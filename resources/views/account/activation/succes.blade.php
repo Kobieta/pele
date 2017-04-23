@@ -1,12 +1,16 @@
 @extends('layouts.skin')
 
+@section('top-info')
+    Konto aktywowane
+@endsection
 
 @section('content')
 
-    <header>
+    <div class="ui four column centered grid">
         <h2>Aktywacja konta przebiegła pomyślnie.</h2>
-        <p>Możesz się teraz zalogować.</p>
-        <a href="{{ url('/login') }}">zaloguj się</a>
-    </header>
+        <div class="column_button">
+            <a class="ui large button inverted blue" href="{{ url('/login') }}">Dalej</a>
+        </div>
+    </div>
 
 @endsection

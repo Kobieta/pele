@@ -33,23 +33,23 @@
     </div>
     <div class="ui stackable centered grid">
         <div class="eight wide column">
-            <div class="ui stackable four column centered grid">
+            <div class="ui stackable four column centered grid buttons_overwrite">
                 <img class="profile" src="/images/profile.png">
                 <div class="column_button">
-                    <a class="ui inverted blue button interface_button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
+                    <a class="ui interface_button blue button" href="{{ route('listings.step1') }}">Stwórz nowe Pelemele</a>
                 </div>
                 <div class="column_button">
-                    <a class="ui inverted purple button interface_button" href="{{ route('login') }}">Zaloguj się</a>
+                    <a class="ui interface_button purple button" href="{{ route('login') }}">Zaloguj się</a>
                 </div>
                 <div class="column_button">
-                    <a class="ui inverted violet button interface_button" href="{{ route('register') }}">Zarejestruj</a>
+                    <a class="ui interface_button violet button" href="{{ route('register') }}">Zarejestruj</a>
                 </div>
             </div>
         </div>
         <div class="eight wide column centered aligned front_page_info">
 
             <div class="front_page_dsc">
-                <p>,,Przyjaciel to człowiek, który wie wszystko o tobie i wciąż cię lubi.''</p>
+                <p>,,Przyjaciel to człowiek, który wie wszystko o Tobie i wciąż Cię lubi.''</p>
                 <h4>~Elbert Hubbard</h4>
             </div>
 

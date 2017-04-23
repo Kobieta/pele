@@ -82,10 +82,12 @@ Route::get('login-facebook', 'FacebookController@redirectToProvider')->name('log
 Route::get('login-facebook/redirect/callback', 'FacebookController@handleProviderCallback');
 
 // Activation link
+Route::post('/account/activation', [
+    'uses' => 'ActivationController@sendActivationURL',
+    'as' => 'account.activation'
+]);
 
 Route::get('/account/activation/{activation_code}', 'ActivationController@activateAccount');
-Route::get('/account/activation/succes', 'ActivationController@succes');
-Route::get('/account/activation/activation-failed', 'ActivationController@failed');
 
 Auth::routes();
 

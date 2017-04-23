@@ -8,22 +8,22 @@
 
     <title>@yield('title')</title>
 
+    <link rel="stylesheet" type="text/css" href="/assets/semantic-ui/semantic.min.css">
 
 
-    <link rel="stylesheet" type="text/css" href="/css/semantic.css">
 
     <link id="skin" rel="stylesheet" type="text/css" href="/css/style0.css">
 
-
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
 
     <script src="/js/jquery.min.js"></script>
-    <script src="/js/semantic.js"></script>
+    <script src="/assets/semantic-ui/semantic.min.js"></script>
+
 
     <script src="/js/shareDialog.js"></script>
     <script src="/js/main.js"></script>
 
 
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
 <div class="top_info">

@@ -31,9 +31,9 @@ class ListingRequest extends FormRequest
 
     public function messages() {
         return [
-            'name.required' => 'Pole "Nazwa Twojej listy pytań" jest wymagane',
-            'email.required' => 'Pole "Twój adres E-mail" jest wymagane.',
-            'email.unique' => 'Podany adres E-mail istnieje już w naszej bazie.',
+            'name.required' => 'Wprowadź nazwę listy pytań.',
+            'email.required' => 'Wprowadź email.',
+            'email.unique' => 'Użytkownik o takim adresie email już istnieje.',
             'email' => 'Nieprawidłowy email.'
         ];
     }

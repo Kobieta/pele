@@ -71,8 +71,8 @@
             </div>
 
 
-            <div class="field">
-                <button type="submit" class="ui button inverted purple">Stwórz moje konto</button>
+            <div class="field buttons_overwrite">
+                <button type="submit" class="ui button purple app_form_button">Stwórz moje konto</button>
             </div>
         </form>
     </div>

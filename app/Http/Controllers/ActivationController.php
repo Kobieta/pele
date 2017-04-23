@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use App\User;
 
 use App\Mail\AccountActivationMail;
+use Illuminate\Support\Facades\Auth;
 
 class ActivationController extends Controller
 {
 
     public function sendActivationURL()
     {
-        Mail::to($user->email)->send(new AccountActivationMail($user->email));
+        $user = Auth::user();
+        $user->sendAccountActivationEmail();
+
+        return redirect()->back();
     }
-    
+
     public function activateAccount($activationCode)
     {
         $email = decrypt($activationCode);

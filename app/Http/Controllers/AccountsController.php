@@ -34,7 +34,7 @@ class AccountsController extends Controller
 
     public function users($id)
     {
-        $data = DB::table('questions')
+       $data = DB::table('questions')
             ->select('answers.*', 'users.email', 'users.name','users.id')
             ->leftJoin('answers', 'questions.id', '=', 'answers.questions_id')
             ->leftJoin('users', 'answers.user_id', '=', 'users.id')
@@ -43,15 +43,24 @@ class AccountsController extends Controller
             ->get();
 
         return view('account.users', compact('data', 'id'));
-
-
     }
 
     public function reply($user, $listingId)
     {
+        $currentUser = Auth::user();
+        $listing = Listing::find($listingId);
+
         $question = new Question();
         $data = $question->getQuestionsAndAnswersPerUser($user, $listingId);
-        return view('account.reply', compact('data'));
+
+
+
+        if($currentUser->id == $user || $currentUser->id == $listing->user_id) {
+            return view('account.reply', compact('data'));
+        } else {
+            // Tu będzie widok błędu z przyciskami powrotu
+            echo "Nie masz dostępu do tej listy.";
+        }
     }
 
 

@@ -235,7 +235,7 @@ img.profile {
 
 .step_1_field label {
     margin-top: 20px!important;
-    background: #5a829f;
+    background: #b083b2;
     font-size: 18px !important;
     margin-bottom: 0 !important;
     padding: 5px 5px 5px 15px;
@@ -256,6 +256,51 @@ img.profile {
     text-align: center;
 }
 
+.step_1_field button[type=submit] {
+    background-color: #5a829f !important;
+}
+
+
+.pele_name {
+    color: #5485c4;
+    font-size: 20px;
+    margin-top: 15px!important;
+}
+
+
+
+.single_pele {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #c7bccf;
+}
+
+/**
+    Buttons overwrite
+ */
+
+.buttons_overwrite .purple {
+    background: #b083b2 !important;
+}
+
+.buttons_overwrite .purple:hover {
+    background: #9f6db2 !important;
+}
+
+.buttons_overwrite .blue {
+    background: #4e94c9 !important;
+}
+.buttons_overwrite .blue:hover {
+    background: #3a84c9 !important;
+}
+
+.buttons_overwrite .violet {
+    background: #7652c4 !important;
+}
+.buttons_overwrite .violet:hover {
+    background: #6949ad !important;
+}
+
+
 @media screen and (min-width: 992px) {
 
     .sticky,
@@ -268,5 +313,8 @@ img.profile {
 @media screen and (max-width: 767px) {
     .half_width_button {
         width: 100%;
+    }
+    .top_info {
+        font-size: 20px;
     }
 }

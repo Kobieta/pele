@@ -32,8 +32,8 @@
 
 
 
-            <div class="field">
-                <button type="submit" class="ui button inverted purple">Wyślij link resetujący hasło</button>
+            <div class="field buttons_overwrite">
+                <button type="submit" class="ui button purple">Wyślij link resetujący hasło</button>
             </div>
 
         </form>

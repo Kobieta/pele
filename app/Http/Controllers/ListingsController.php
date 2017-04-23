@@ -45,7 +45,7 @@ class ListingsController extends Controller
 
     public function step2(ListingRequest $request)
     {
-        //Check auth. If user is not logged in, create new account
+        //Check session. If user is not logged in, create new account
         if(!Auth::check()) {
             // Save user's credentials
             $email = $request['email'];
@@ -85,7 +85,6 @@ class ListingsController extends Controller
             $question->save();
         }
 
-        //dd($request->all());
         return view('listings.step2', compact('listing'));
     }
 
@@ -93,7 +92,6 @@ class ListingsController extends Controller
     {
         $listings = Listing::where('slug', $slug)->where('id', $id)
             ->first();
-//        dd($Listings->name);
         $questions = Question::where('listings_id', $id)->get();
 
         return view('listings.show', compact('listings', 'questions'));
@@ -101,8 +99,6 @@ class ListingsController extends Controller
 
     public function store(AnswersRequest $request)
     {
-//        dd($request->all());
-//        Answer::create($request->all());
 
         $email = $request->input('email');
 
@@ -113,6 +109,9 @@ class ListingsController extends Controller
         $password = $user->generateRandomPassword();
         $user -> password = bcrypt($password);
         $user -> save();
+
+        Auth::login($user);
+
         $email = $request->input('email');
 
         // Send information email
@@ -165,20 +164,5 @@ class ListingsController extends Controller
                 'msg' => 'Nieautoryzowany dostęp.',
             ]);
         }
-
-
-
-
-    /*
-        $friend_email = $request
-
-        if($friend_email != $user->email) {
-            try {
-
-            } catch(\Exception $e) {
-
-            }
-        }
-    */
     }
 }
