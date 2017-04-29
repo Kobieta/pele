@@ -1,11 +1,15 @@
 @extends('layouts.skin')
 
+@section('top-info')
+    Odpowiedzi od {{ $currentUser->name }}
+@endsection
+
 @section('content')
     @foreach($data as $answer)
-
-        Pytanie: <b style="color:red">{{$answer->asking}}</b><br>
-        Odpowiedź: <b style="color:green">{{$answer->reply}}</b><hr>
-
+        <div class="question_show">
+            Pytanie: <span class="question">{{ $answer->asking }}</span><br>
+            Odpowiedź: <span class="answer">{{ $answer->reply }}</span><hr>
+        </div>
     @endforeach
 
 @endsection

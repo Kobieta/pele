@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnswersRequest;
 use App\Http\Requests\SendListing;
 use App\Listing;
+use App\Mail\AnswersNotificationMail;
 use App\Mail\ListingFromFriendMail;
 use App\Mail\NewAccount;
 use App\Question;
@@ -15,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ListingRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 use App\Answer;
 
 
@@ -45,8 +47,13 @@ class ListingsController extends Controller
 
     public function step2(ListingRequest $request)
     {
-        //Check session. If user is not logged in, create new account
-        if(!Auth::check()) {
+        //Check session.
+        if(Auth::check()) {
+
+            $userID = Auth::getUser()->id;
+
+        } else { // user is not logged in
+
             // Save user's credentials
             $email = $request['email'];
             $user = new User();
@@ -65,8 +72,6 @@ class ListingsController extends Controller
             Mail::to($user->email)->send(new NewAccount($user, $password));
 
             $userID = $user->id;
-        } else { // user is logged in
-            $userID = Auth::getUser()->id;
         }
 
         $listing = new \App\Listing();
@@ -100,33 +105,64 @@ class ListingsController extends Controller
     public function store(AnswersRequest $request)
     {
 
-        $email = $request->input('email');
+        if(Auth::check()) {
+            $listing = Listing::find($request['listing_id']);
 
-        $user = new User();
-        $user -> name = explode('@', $email)[0];
-        $user -> email = $email;
+            $user = Auth::user();
 
-        $password = $user->generateRandomPassword();
-        $user -> password = bcrypt($password);
-        $user -> save();
+            if($user->id != $listing->user_id) {
 
-        Auth::login($user);
+                $question = new Question();
+                $users = $question->getUsersThatAnswered($listing->id);
 
-        $email = $request->input('email');
+                $answered = false;
+                if(count($users)) {
+                    foreach($users as $single_user) {
+                        if($single_user->id == $user->id) {
+                            $answered = true;
+                        }
+                    }
+                }
 
-        // Send information email
-        Mail::to($user->email)->send(new NewAccount($user, $password));
+                if($answered) {
+                    return redirect()->to('/account')->with('message', 'Już odpowiedziałeś na tę listę.');
+                }
+
+            } else {
+                return redirect()->to('/account')->with('message', 'Nie możesz odpowiadać na własną listę pytań.');
+            }
+
+        } else {
+            // Save user's credentials
+            $email = $request['email'];
+            $user = new User();
+            $user->name = explode('@', $email)[0];
+            $user->email = $email;
+
+            // password generator
+            $password = $user->generateRandomPassword();
+            $user->password = bcrypt($password);
+            $user->save();
+
+            // Start session
+            Auth::login($user);
+
+            // Send information email
+            Mail::to($user->email)->send(new NewAccount($user, $password));
+
+            $userID = $user->id;
+        }
+
 
         foreach ($request->input('reply') as $key => $item) {
             $reply = new Answer();
             $reply->reply = $item;
-//            $reply->photo = 'test';
-            $reply->user_id = $user->id;
+            $reply->user_id = $userID;
             $reply->questions_id = $key;
-            $user->id;
             $reply->save();
         }
-       // return redirect()->route('listings.store');
+
+        return redirect()->to('/account')->with('message', 'Odpowiedziałeś znajomemu na pytania.');
     }
 
 
@@ -161,6 +197,7 @@ class ListingsController extends Controller
         } else {
             return response()->json([
                 'status' => 'error',
+                'code' => 0,
                 'msg' => 'Nieautoryzowany dostęp.',
             ]);
         }

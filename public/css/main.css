@@ -1,3 +1,7 @@
+/*
+    MESSAGES
+ */
+
 .unactive-account,
 .failed-login {
     text-align: center;
@@ -23,6 +27,18 @@
     text-align: center;
     color: #99353e;
 }
+
+.positive_message {
+    text-align: center;
+    color: #00b646;
+    font-size: 17px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+
+
 
 .username {
     margin: 0;
@@ -233,49 +249,8 @@ img.profile {
     background: #b083b2 !important;
 }
 
-.step_1_field label {
-    margin-top: 20px!important;
-    background: #b083b2;
-    font-size: 18px !important;
-    margin-bottom: 0 !important;
-    padding: 5px 5px 5px 15px;
-    color: #FFFFFF!important;
-    border-radius: 3px;
-}
-
-.step_1_field input[type=text] {
-    color: #3a5264 !important;
-    letter-spacing: 1px;
-    font-size: 14px;
-}
-
-.step_1_field p {
-    display: block;
-    margin: 10px auto;
-    font-size: 18px;
-    text-align: center;
-}
-
-.step_1_field button[type=submit] {
-    background-color: #5a829f !important;
-}
-
-
-.pele_name {
-    color: #5485c4;
-    font-size: 20px;
-    margin-top: 15px!important;
-}
-
-
-
-.single_pele {
-    padding-bottom: 5px;
-    border-bottom: 2px solid #c7bccf;
-}
-
 /**
-    Buttons overwrite
+    BUTTONS OVERWRITE
  */
 
 .buttons_overwrite .purple {
@@ -299,6 +274,107 @@ img.profile {
 .buttons_overwrite .violet:hover {
     background: #6949ad !important;
 }
+/*///////////*/
+
+/*
+    FORMS
+ */
+
+.pele_field label {
+    margin-top: 20px!important;
+    font-size: 18px !important;
+    margin-bottom: 0 !important;
+    padding: 5px 5px 5px 15px;
+    color: #FFFFFF!important;
+    border-radius: 3px;
+}
+
+.pele_field input[type=text] {
+    color: #3a5264 !important;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+.pele_field p {
+    display: block;
+    margin: 10px auto;
+    font-size: 18px;
+    text-align: center;
+}
+
+.pele_field button[type=submit] {
+
+    font-size: 18px;
+}
+
+.step_1_form .pele_field label {
+    background: #b083b2;
+}
+.step_1_form .pele_field button[type=submit] {
+    background-color: #b083b2 !important
+}
+.answers_form .pele_field label {
+    background: #6b8a8e;
+}
+
+.answers_form .pele_field button[type=submit] {
+    background-color: #6b8a8e !important;
+}
+/*///////////*/
+
+
+/*
+    PELE NAMES
+ */
+.pele_header {
+    text-align: center;
+    color: #6b8a8e;
+    font-size: 35px;
+    margin: 20px auto;
+    border-bottom: 2px solid;
+    padding-bottom: 20px;
+}
+
+.pele_name {
+    color: #7652c4;
+    font-size: 18px;
+    margin-top: 15px!important;
+}
+
+.pele_name span {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.single_pele {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #c7bccf;
+}
+
+.question_show {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.question_show span.question {
+    color: #923e3e;
+
+}
+.question_show span.answer {
+    color: #1aa459;
+}
+
+
+
+.skin_app h1,
+.skin_app h2,
+.skin_app h3,
+.skin_app h4,
+.skin_app h5,
+.skin_app h6 {
+    text-align: center !important;
+}
+
 
 
 @media screen and (min-width: 992px) {

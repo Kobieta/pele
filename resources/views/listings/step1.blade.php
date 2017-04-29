@@ -7,7 +7,7 @@
 
 @section('content')
 
-    {!! Form::open(['route' => 'listings.step2', 'class'=>'ownlist']) !!}
+    {!! Form::open(['route' => 'listings.step2', 'class'=>'step_1_form ownlist']) !!}
     @if($errors->any())
         @foreach($errors->all() as $error)
             <div class="ui negative message">
@@ -18,7 +18,7 @@
         @endforeach
     @endif
     <div class="ui form">
-        <div class="field step_1_field">
+        <div class="field pele_field">
             <label class="title">Nazwa Twojej listy pytań</label>
            <input type="text" name="name">
         </div>
@@ -94,7 +94,7 @@
             @foreach($questions as $question)
                 <div>
                     <div class="ui fluid">
-                        <div class="field rainbow step_1_field">
+                        <div class="field rainbow pele_field">
                             <label>Pytanie {{$question['label']}}</label>
                             <input class="ui fluid action input" type="text" name="asking[]" value="{{$question['pytanie']}}">
                         </div>
@@ -106,7 +106,7 @@
 
         @if(!Auth::check())
             <div class="ui form">
-                <div class="ui fluid step_1_field">
+                <div class="ui fluid pele_field">
                     <div class="field rainbow">
                         <label>Twój adres e-mail</label>
                         <input name="email" id="email" class="ui fluid action input" placeholder="E-mail">
@@ -115,7 +115,7 @@
             </div>
         @endif
         <div class="ui form">
-            <div class="ui fluid buttons_overwrite">
+            <div class="ui fluid pele_field buttons_overwrite">
                 <br>
                 <button class="ui purple button fluid field" type="submit">dalej</button>
             </div>

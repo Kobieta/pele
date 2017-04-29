@@ -24,7 +24,7 @@ class AnswersRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email|unique:users,email'
+            'email' => 'sometimes|required|email|unique:users,email'
         ];
     }
 

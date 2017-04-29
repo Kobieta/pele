@@ -15,5 +15,5 @@ Elbert Hubbard
 @if( $user->active )
 
 @else
-<p>Twoja konto jest nieaktywne.</p>
+    <p>Twoja konto jest nieaktywne.</p>
 @endif

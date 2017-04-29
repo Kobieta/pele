@@ -143,7 +143,7 @@ return [
 
     [
         'label' => '29',
-        'pytanie' => 'Wyslij mi zdjęcie'
+        'pytanie' => 'Czy ktoś kiedyś zawiódł Twoje zaufanie?'
     ],
 
     [

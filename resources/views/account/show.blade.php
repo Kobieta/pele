@@ -6,6 +6,22 @@
 
 @section('content')
 
+    @if(session('message'))
+        <div class="positive_message">
+            {{ session('message') }}
+        </div>
+    @endif
+    @if($errors->any())
+        <ul class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <div class="ui negative message">
+                    <div class="header">
+                        {{ $error }}
+                    </div>
+                </div>
+            @endforeach
+        </ul>
+    @endif
         <div class="ui stackable four column centered grid">
             <div class="ui centered column centered aligned grid">
                 <img class="profile" src="/images/profile.png">

@@ -6,7 +6,7 @@
 
 @section('content')
 
-    {!! Form::open(['route' => 'listings.store', 'class'=>'ownlist']) !!}
+    {!! Form::open(['route' => 'listings.store', 'class'=>'answers_form ownlist']) !!}
     @if($errors->any())
         <ul class="alert alert-danger">
             @foreach($errors->all() as $error)
@@ -18,26 +18,35 @@
             @endforeach
         </ul>
     @endif
-    <div class="ui form success">
-        <div class="field">
-            <label> E-mail</label>
-            <input type="email" name="email"  value="" class="twelve wide field"  placeholder="joe@schmoe.com">
-        </div>
-    </div>
-    <h1> PeleMele "{{$listings->name}}"</h1>
+    <h2 class="pele_header">{{ $listings->name }}</h2>
     <div class="ui form">
         @foreach($questions as $question)
-            <div class="field">
-                <label>{{$question->asking}}</label>
-                <div class="fields">
-                    <div class="twelve wide field rainbow">
-                        <input type="text" name="reply[{{$question->id}}]" value="" >
-                    </div>
+            <div class="ui fluid pele_field">
+                <div class="field rainbow">
+                    <label>{{$question->asking}}</label>
+                    <input class="ui fluid action input" type="text" name="reply[{{$question->id}}]" value="" >
                 </div>
             </div>
         @endforeach
     </div>
-    <button class="positive ui button twelve wide field">zapisz</button>
+
+    @if(!Auth::check())
+        <div class="ui form success">
+            <div class="ui fluid pele_field">
+                <div class="field rainbow">
+                    <label> E-mail</label>
+                    <input type="email" name="email"  value="" class="fluid field"  placeholder="joe@schmoe.com">
+                </div>
+            </div>
+        </div>
+    @endif
+    <input name="listing_id" type="hidden" value="{{ $listings->id }}">
+    <div class="ui form">
+        <div class="ui fluid pele_field buttons_overwrite">
+            <br>
+            <button class="ui purple button fluid field" type="submit">Odpowiedz</button>
+        </div>
+    </div>
     {!! Form::close() !!}
 
 

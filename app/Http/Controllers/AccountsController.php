@@ -32,17 +32,22 @@ class AccountsController extends Controller
         return view('account.listings', compact('peles'));
     }
 
-    public function users($id)
+    public function users($listingId)
     {
+        /*
        $data = DB::table('questions')
             ->select('answers.*', 'users.email', 'users.name','users.id')
-            ->leftJoin('answers', 'questions.id', '=', 'answers.questions_id')
-            ->leftJoin('users', 'answers.user_id', '=', 'users.id')
-            ->where('questions.listings_id', $id)
+            ->join('answers', 'questions.id', '=', 'answers.questions_id')
+            ->join('users', 'answers.user_id', '=', 'users.id')
+            ->where('questions.listings_id', $listingId)
             ->groupBy('answers.user_id')
             ->get();
+    */
+        $question = new Question();
 
-        return view('account.users', compact('data', 'id'));
+        $data = $question->getUsersThatAnswered($listingId);
+
+        return view('account.users', compact('data', 'listingId'));
     }
 
     public function reply($user, $listingId)
@@ -56,13 +61,12 @@ class AccountsController extends Controller
 
 
         if($currentUser->id == $user || $currentUser->id == $listing->user_id) {
-            return view('account.reply', compact('data'));
+            return view('account.reply', compact('data', 'currentUser'));
         } else {
             // Tu będzie widok błędu z przyciskami powrotu
-            echo "Nie masz dostępu do tej listy.";
+            return redirect()->to('/account')->with('message', 'Nie masz dostępu do tej listy.');
         }
     }
-
 
     /**
      * Changes user's name

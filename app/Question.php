@@ -29,4 +29,16 @@ class Question extends Model
                 ->where('answers.user_id', $user)
                 ->get();
     }
+
+    public function getUsersThatAnswered($listingId)
+    {
+        return $this
+                ->select('answers.*', 'users.email', 'users.name','users.id')
+                ->join('answers', 'questions.id', '=', 'answers.questions_id')
+                ->join('users', 'answers.user_id', '=', 'users.id')
+                ->where('questions.listings_id', $listingId)
+                ->groupBy('answers.user_id')
+                ->get();
+
+    }
 }

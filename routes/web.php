@@ -58,7 +58,7 @@ Route::get('/account/listings', [
     'as' => 'account.listings'
 ]);
 
-Route::get('/account/listing/users/{id}', [
+Route::get('/account/listing/users/{listingId}', [
     'uses' => 'AccountsController@users',
     'as' => 'account.users'
 ]);

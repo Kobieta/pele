@@ -1,12 +1,16 @@
 @extends('layouts.skin')
 
+@section('title')
+    Konto
+@endsection
+
 @section('top-info')
     jesteś zalogowany
 @endsection
 
 @section('content')
     <div class="ui container">
-        Jesteś zalogowany!
+        <h3>Jesteś zalogowany!</h3>
         <div class="eight wide column">
             <div class="ui stackable four column centered grid buttons_overwrite">
                 <div class="column_button">
