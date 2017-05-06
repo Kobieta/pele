@@ -23,8 +23,8 @@
         </ul>
     @endif
         <div class="ui stackable four column centered grid">
-            <div class="ui centered column centered aligned grid">
-                <img class="profile" src="/images/profile.png">
+            <div class="ui centered column centered aligned grid avatar_panel">
+                <img class="profile" src="/images/avatars/{{ $user->avatar . '.png' }}">
                 <h3 class="username">{{ $user->name }}</h3>
             </div>
         </div>
@@ -52,7 +52,8 @@
 
             @if($user->active == 0)
                 {!! Form::open(['route' => 'account.activation']) !!}
-                    Twoje konto jest nieaktywne!
+                    <p>Twoje konto jest nieaktywne!</p>
+                    <p>Aktywuj swoje konto. Jeśli nie aktywujesz konta za pomocą skrzynki pocztowej, nie będziesz mógł się ponownie zalogować.</p>
                     <div class="column_button">
                         <button type="submit" class="ui blue button interface_button">Wyślij link aktywujący</button>
                     </div>

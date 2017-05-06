@@ -40,6 +40,10 @@
 
 
 
+.avatar_panel {
+
+}
+
 .username {
     margin: 0;
     letter-spacing: 2px;
@@ -70,6 +74,7 @@
 
 img.profile {
     max-width: 100%;
+    border-radius: 100%;
 }
 
 .interface_button {
@@ -163,6 +168,7 @@ img.profile {
 
 .margin_container {
     margin: 120px auto 50px auto;
+    min-height: 650px;
 }
 
 .login_info span {
@@ -376,12 +382,16 @@ img.profile {
 }
 
 
-
 @media screen and (min-width: 992px) {
 
     .sticky,
     #menuActivator {
         display: none;
+    }
+
+    .sticky {
+        display: block;
+        position: static;
     }
 
 }

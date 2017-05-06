@@ -44,7 +44,7 @@ class FacebookController extends Controller
             $user->name = explode('@', $email)[0];
             $user->email = $email;
             $user->active = 1;
-
+            $user->avatar = $user->generateRandomAvatar();
             $user->save();
 
             Auth::Login($user);

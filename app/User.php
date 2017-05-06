@@ -43,10 +43,9 @@ class User extends Authenticatable
      */
     public function generateRandomPassword()
     {
-
         $length = 10;
 
-        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-+=_,!@$#*%";
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
         $password = substr( str_shuffle( $chars ), 0, $length );
 
@@ -74,6 +73,21 @@ class User extends Authenticatable
     public function sendAccountActivationEmail()
     {
         Mail::to($this->email)->send(new AccountActivationMail($this->email));
+    }
+
+    /**
+     * Generates random avatar
+     *
+     */
+    public function generateRandomAvatar()
+    {
+        $max = 4;
+
+        $randomNumber = rand(1, $max);
+
+        $fileName = 'av_' . $randomNumber;
+
+        return $fileName;
     }
 
 }

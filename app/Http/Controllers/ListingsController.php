@@ -60,6 +60,9 @@ class ListingsController extends Controller
             $user->name = explode('@', $email)[0];
             $user->email = $email;
 
+
+            $user->avatar = $user->generateRandomAvatar();
+
             // password generator
             $password = $user->generateRandomPassword();
             $user->password = bcrypt($password);
@@ -104,11 +107,12 @@ class ListingsController extends Controller
 
     public function store(AnswersRequest $request)
     {
-
+        $listing = Listing::find($request['listing_id']);
         if(Auth::check()) {
-            $listing = Listing::find($request['listing_id']);
+
 
             $user = Auth::user();
+            $userID = $user->id;
 
             if($user->id != $listing->user_id) {
 
@@ -143,7 +147,7 @@ class ListingsController extends Controller
             $password = $user->generateRandomPassword();
             $user->password = bcrypt($password);
             $user->save();
-
+            $user->avatar = $user->generateRandomAvatar();
             // Start session
             Auth::login($user);
 
@@ -162,7 +166,9 @@ class ListingsController extends Controller
             $reply->save();
         }
 
-        return redirect()->to('/account')->with('message', 'Odpowiedziałeś znajomemu na pytania.');
+        Mail::send(new AnswersNotificationMail($listing->user_id, Auth::user()));
+
+        return redirect()->to('/account')->with('message', 'Odpowiedziałeś znajomemu na pytania.')->withInput();
     }
 
 

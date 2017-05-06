@@ -96,7 +96,7 @@
                     <div class="ui fluid">
                         <div class="field rainbow pele_field">
                             <label>Pytanie {{$question['label']}}</label>
-                            <input class="ui fluid action input" type="text" name="asking[]" value="{{$question['pytanie']}}">
+                            <input class="ui fluid action input" type="text" name="asking[]" value="{{ $question['pytanie'] }}">
                         </div>
                     </div>
                 </div>

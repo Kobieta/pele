@@ -24,7 +24,7 @@
             <div class="ui fluid pele_field">
                 <div class="field rainbow">
                     <label>{{$question->asking}}</label>
-                    <input class="ui fluid action input" type="text" name="reply[{{$question->id}}]" value="" >
+                    <input class="ui fluid action input" type="text" name="reply[{{$question->id}}]" value="{{ old('reply.' . $question->id) }}" >
                 </div>
             </div>
         @endforeach

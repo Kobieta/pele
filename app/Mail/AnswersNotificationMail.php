@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Listing;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -17,22 +18,28 @@ class AnswersNotificationMail extends Mailable
      *
      * @return void
      */
-    public function __construct($authorEmail, $userEmail)
+    public function __construct($author_listing_id, $user)
     {
-        $this->userEmail = $userEmail;
-        $this->authorEmail = $authorEmail;
+        $this->author = User::where('id', $author_listing_id)->first();
+        $this->user = $user;
+        $this->listing = Listing::where('user_id', $author_listing_id)->first();
     }
 
     /**
      * @var User
      */
-    protected $authorEmail;
+    private $author;
 
 
     /**
      * @var User
      */
-    protected $userEmail;
+    private $user;
+
+    /**
+     * @var Listing
+     */
+    private $listing;
 
     /**
      * Build the message.
@@ -41,13 +48,14 @@ class AnswersNotificationMail extends Mailable
      */
     public function build()
     {
-        $this->to($this->authorEmail);
+        $this->to($this->author->email);
         return
-            $this->subject('Przyjaciel odpowiedział na Twoje pytania!')
-            ->view('emails.users.account_activation')
+            $this->subject('Znajomy odpowiedział na Twoją listę!')
+            ->view('emails.friends.answers')
             ->with([
                 'user' => $this->user,
-                'author' => $this->author
+                'author' => $this->author,
+                'listing' => $this->listing
             ]);
     }
 }
