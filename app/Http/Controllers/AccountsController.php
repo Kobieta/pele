@@ -53,14 +53,15 @@ class AccountsController extends Controller
     public function reply($user, $listingId)
     {
         $currentUser = Auth::user();
+        $correspondingUser = User::find($user);
         $listing = Listing::find($listingId);
 
         $question = new Question();
         $data = $question->getQuestionsAndAnswersPerUser($user, $listingId);
 
 
-        if($currentUser->id == $user || $currentUser->id == $listing->user_id) {
-            return view('account.reply', compact('data', 'currentUser'));
+        if($currentUser->id == $correspondingUser->id || $currentUser->id == $listing->user_id) {
+            return view('account.reply', compact('data', 'correspondingUser'));
         } else {
             return redirect()->to('/account')->with([
                 'message' => 'Nie masz dostępu do tej listy.',

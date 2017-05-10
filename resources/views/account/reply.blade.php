@@ -1,7 +1,7 @@
 @extends('layouts.skin')
 
 @section('top-info')
-    Odpowiedzi od {{ $currentUser->name }}
+    Odpowiedzi od {{ $correspondingUser->name }}
 @endsection
 
 @section('content')
