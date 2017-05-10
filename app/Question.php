@@ -39,6 +39,5 @@ class Question extends Model
                 ->where('questions.listings_id', $listingId)
                 ->groupBy('answers.user_id')
                 ->get();
-
     }
 }

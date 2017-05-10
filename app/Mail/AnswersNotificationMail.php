@@ -18,23 +18,23 @@ class AnswersNotificationMail extends Mailable
      *
      * @return void
      */
-    public function __construct($author_listing_id, $user)
+    public function __construct($listing_id, $author_id, $corresponding)
     {
-        $this->author = User::where('id', $author_listing_id)->first();
-        $this->user = $user;
-        $this->listing = Listing::where('user_id', $author_listing_id)->first();
+        $this->listing = Listing::where('id', $listing_id)->first();
+        $this->listing_author = User::where('id', $author_id)->first();
+        $this->current_user = $corresponding;
     }
 
     /**
      * @var User
      */
-    private $author;
+    private $listing_author;
 
 
     /**
      * @var User
      */
-    private $user;
+    private $current_user;
 
     /**
      * @var Listing
@@ -48,13 +48,13 @@ class AnswersNotificationMail extends Mailable
      */
     public function build()
     {
-        $this->to($this->author->email);
+        $this->to($this->listing_author->email);
         return
             $this->subject('Znajomy odpowiedział na Twoją listę!')
             ->view('emails.friends.answers')
             ->with([
-                'user' => $this->user,
-                'author' => $this->author,
+                'user' => $this->current_user,
+                'author' => $this->listing_author,
                 'listing' => $this->listing
             ]);
     }

@@ -78,6 +78,7 @@ class User extends Authenticatable
     /**
      * Generates random avatar
      *
+     * @return string
      */
     public function generateRandomAvatar()
     {

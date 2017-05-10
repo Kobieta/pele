@@ -4,13 +4,19 @@
     Panel użytkownika
 @endsection
 
-@section('content')
-
+@section('messages')
     @if(session('message'))
-        <div class="positive_message">
-            {{ session('message') }}
+        <div class="message_panel {{ session('class') }}">
+            <div class="ui container">
+                <div class="single_message">
+                    {{ session('message') }}
+                </div>
+            </div>
         </div>
     @endif
+@endsection
+
+@section('content')
     @if($errors->any())
         <ul class="alert alert-danger">
             @foreach($errors->all() as $error)

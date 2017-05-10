@@ -14,10 +14,10 @@
                         {{$pele->name}}
                     </div>
                     <div class="right floated content">
-                        <a class="ui violet button" href="{{route('listings.show', [$pele->slug, $pele->id])}}">pokaż</a>
-                    </div>
-                    <div class="right floated content">
-                        <a class="ui blue button" href="{{route('account.users', $pele->id)}}">zobacz kto wypełnił</a>
+                        <div class="blue ui buttons">
+                            <a class="ui violet button" href="{{route('listings.show', [$pele->slug, $pele->id])}}">pokaż</a>
+                            <a class="ui blue button" href="{{route('account.users', $pele->id)}}">zobacz kto wypełnił</a>
+                        </div>
                     </div>
                 </div>
             </div>

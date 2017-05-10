@@ -30,6 +30,8 @@
     @yield('top-info')
 </div>
 
+    @yield('messages')
+
 <div class="ui container margin_container skin_app">
     @yield('content')
 </div>

@@ -4,21 +4,24 @@
     Odpowiadasz na Pelemele
 @endsection
 
+@section('messages')
+    @if($errors->any())
+        <div class="message_panel error_message">
+            <div class="ui container">
+                @foreach($errors->all() as $error)
+                    <div class="single_message">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    @endif
+@endsection
+
 @section('content')
 
     {!! Form::open(['route' => 'listings.store', 'class'=>'answers_form ownlist']) !!}
-    @if($errors->any())
-        <ul class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <div class="ui negative message">
-                    <div class="header">
-                        {{ $error }}
-                    </div>
-                </div>
-            @endforeach
-        </ul>
-    @endif
-    <h2 class="pele_header">{{ $listings->name }}</h2>
+    <h2 class="pele_header">{{ $listing->name }}</h2>
     <div class="ui form">
         @foreach($questions as $question)
             <div class="ui fluid pele_field">
@@ -40,7 +43,7 @@
             </div>
         </div>
     @endif
-    <input name="listing_id" type="hidden" value="{{ $listings->id }}">
+    <input name="listing_id" id="listing_id" type="hidden" value="{{ $listing->id }}">
     <div class="ui form">
         <div class="ui fluid pele_field buttons_overwrite">
             <br>
@@ -49,7 +52,14 @@
     </div>
     {!! Form::close() !!}
 
+    <script>
+            $(function() {
+                console.log('href',  '/css/style' + {{ $listing->styling }} + '.css' );
+                $('#skin') .attr('href',  '/css/style' + {{ $listing->styling }} + '.css' );
+            });
+                //$('#skin') .attr('href',  '/css/' + $(this).data('iden') + '.css' );
 
+    </script>
 
 
 @endsection

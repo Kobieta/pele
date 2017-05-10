@@ -14,9 +14,16 @@ class ActivationController extends Controller
     public function sendActivationURL()
     {
         $user = Auth::user();
-        $user->sendAccountActivationEmail();
+        try {
+            $user->sendAccountActivationEmail();
+        } catch(\Exception $e) {
 
-        return redirect()->back()->with('message', 'Link aktywujący konto został wysłany. Sprawdź skrzynkę pocztową.');
+        }
+
+        return redirect()->back()->with([
+            'message' => 'Link aktywujący konto został wysłany. Sprawdź skrzynkę pocztową.',
+            'class' => 'succes_message'
+        ]);
     }
 
     public function activateAccount($activationCode)

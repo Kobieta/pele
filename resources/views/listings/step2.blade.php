@@ -4,15 +4,18 @@
     {{ $listing->name }}
 @endsection
 
+@section('messages')
+    <div class="message_panel succes_message">
+        <div class="single_message">Pomyślnie utworzyłeś nową listę pytań!</div>
+        <div class="single_message">Możesz rozesłać ją teraz do znajomych.</div>
+    </div>
+@endsection
+
 @section('content')
 
-    <div class="ui center aligned header">
-        <h3>Pomyślnie utworzyłeś swoją listę!</h3>
-        <p>Możesz ją teraz udostępnić przyjaciołom.</p>
-    </div>
         <div class="ui buttons">
-            <button class="ui red basic button"><a href="{{route('listings.step1')}}">wstecz</a></button>
-            <button class="ui blue basic button"><a href="{{route('listings.show', [$listing->slug , $listing->id])}}" >podgląd</a></button>
+            <a class="ui red basic button" href="{{route('listings.step1')}}">wstecz</a>
+            <a class="ui blue basic button" href="{{route('listings.show', [$listing->slug , $listing->id])}}" >podgląd</a>
         </div>
 
 
@@ -35,11 +38,5 @@
             <button type="submit" id="email_sender" class="ui fluid button">Wyślij listę przez E-maila</button>
 
         {!! Form::close() !!}
-
-
-
-
-
-
 
 @endsection

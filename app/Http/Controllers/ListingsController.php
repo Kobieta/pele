@@ -93,23 +93,24 @@ class ListingsController extends Controller
             $question->save();
         }
 
-        return view('listings.step2', compact('listing'));
+        return view('listings.step2')->with('listing', $listing);
     }
 
     public function show($slug, $id)
     {
-        $listings = Listing::where('slug', $slug)->where('id', $id)
+        $listing = Listing::where('slug', $slug)->where('id', $id)
             ->first();
         $questions = Question::where('listings_id', $id)->get();
 
-        return view('listings.show', compact('listings', 'questions'));
+
+
+        return view('listings.show', compact('listing', 'questions'));
     }
 
     public function store(AnswersRequest $request)
     {
         $listing = Listing::find($request['listing_id']);
         if(Auth::check()) {
-
 
             $user = Auth::user();
             $userID = $user->id;
@@ -129,15 +130,23 @@ class ListingsController extends Controller
                 }
 
                 if($answered) {
-                    return redirect()->to('/account')->with('message', 'Już odpowiedziałeś na tę listę.');
+                    return redirect()->to('/account')->with([
+                        'message' => 'Już odpowiedziałeś na tę listę.',
+                        'class' => 'error_message'
+                    ]);
                 }
 
             } else {
-                return redirect()->to('/account')->with('message', 'Nie możesz odpowiadać na własną listę pytań.');
+                return redirect()->to('/account')->with([
+                    'message' => 'Nie możesz odpowiadać na własną listę.',
+                    'class' => 'error_message'
+                ]);
             }
 
         } else {
-            // Save user's credentials
+
+            // create new user
+
             $email = $request['email'];
             $user = new User();
             $user->name = explode('@', $email)[0];
@@ -146,17 +155,17 @@ class ListingsController extends Controller
             // password generator
             $password = $user->generateRandomPassword();
             $user->password = bcrypt($password);
-            $user->save();
             $user->avatar = $user->generateRandomAvatar();
-            // Start session
+            $user->save();
+
             Auth::login($user);
 
-            // Send information email
             Mail::to($user->email)->send(new NewAccount($user, $password));
 
             $userID = $user->id;
         }
 
+        // save answers
 
         foreach ($request->input('reply') as $key => $item) {
             $reply = new Answer();
@@ -166,9 +175,13 @@ class ListingsController extends Controller
             $reply->save();
         }
 
-        Mail::send(new AnswersNotificationMail($listing->user_id, Auth::user()));
+        // notify author of the list
+        Mail::send(new AnswersNotificationMail($listing->id, $listing->user_id, Auth::user()));
 
-        return redirect()->to('/account')->with('message', 'Odpowiedziałeś znajomemu na pytania.')->withInput();
+        return redirect()->to('/account')->with([
+            'message' => 'Odpowiedziałeś znajomemu na pytania.',
+            'class' => 'succes_message',
+        ])->withInput();
     }
 
 
@@ -209,3 +222,19 @@ class ListingsController extends Controller
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

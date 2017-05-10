@@ -8,7 +8,7 @@
 
     <div class="ui four column centered grid">
         <h2>Aktywacja konta przebiegła pomyślnie.</h2>
-        <div class="column_button">
+        <div class="column_button buttons_overwrite">
             <a class="ui large button inverted blue" href="{{ url('/login') }}">Dalej</a>
         </div>
     </div>

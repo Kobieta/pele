@@ -27,6 +27,13 @@ Route::post('/step-2', [
     'as' => 'listings.step2'
 ]);
 
+
+Route::get('/listings/{slug}/{id}', [
+    'uses' => 'ListingsController@show',
+    'as' => 'listings.show'
+]);
+
+
 Route::post('/store', [
     'uses' => 'ListingsController@store',
     'as' => 'listings.store'
@@ -63,23 +70,12 @@ Route::get('/account/listing/users/{listingId}', [
     'as' => 'account.users'
 ]);
 
-
 Route::get('/account/listing/reply/{user}/{id}', [
     'uses' => 'AccountsController@reply',
     'as' => 'account.reply'
 ]);
 
 
-// 10:57 /{slug}/{id}
-
-Route::get('/listings/{slug}/{id}', [
-    'uses' => 'ListingsController@show',
-    'as' => 'listings.show'
-]);
-
-// Facebook routes
-Route::get('login-facebook', 'FacebookController@redirectToProvider')->name('login.facebook');
-Route::get('login-facebook/redirect/callback', 'FacebookController@handleProviderCallback');
 
 // Activation link
 Route::post('/account/activation', [
@@ -89,6 +85,14 @@ Route::post('/account/activation', [
 
 Route::get('/account/activation/{activation_code}', 'ActivationController@activateAccount');
 
+
+
+// Facebook routes
+Route::get('login-facebook', 'FacebookController@redirectToProvider')->name('login.facebook');
+Route::get('login-facebook/redirect/callback', 'FacebookController@handleProviderCallback');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -97,5 +101,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/terms', [
+    'uses' => 'PageController@terms',
+    'as' => 'terms'
+]);
 
 

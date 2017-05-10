@@ -59,12 +59,13 @@ class AccountsController extends Controller
         $data = $question->getQuestionsAndAnswersPerUser($user, $listingId);
 
 
-
         if($currentUser->id == $user || $currentUser->id == $listing->user_id) {
             return view('account.reply', compact('data', 'currentUser'));
         } else {
-            // Tu będzie widok błędu z przyciskami powrotu
-            return redirect()->to('/account')->with('message', 'Nie masz dostępu do tej listy.');
+            return redirect()->to('/account')->with([
+                'message' => 'Nie masz dostępu do tej listy.',
+                'error' => 'error_message'
+            ]);
         }
     }
 
@@ -81,7 +82,10 @@ class AccountsController extends Controller
         $user->name = $new_name;
         $user->update();
 
-        return redirect()->back();
+        return redirect()->back()->with([
+            'message' => 'Zmieniłeś swój nick!',
+            'class' => 'succes_message'
+        ]);
     }
 
 }

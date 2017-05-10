@@ -4,6 +4,18 @@
     Logowanie
 @endsection
 
+@section('messages')
+    @if(session('message'))
+        <div class="message_panel {{ session('class') }}">
+            <div class="ui container">
+                <div class="single_message">
+                    {{ session('message') }}
+                </div>
+            </div>
+        </div>
+    @endif
+@endsection
+
 @section('content')
 
     @if(session('not-active'))
@@ -33,7 +45,7 @@
 
 
             <div class="field">
-                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                <label for="email" class="col-md-4 control-label">Adres E-mail:</label>
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
 
                 @if ($errors->has('email'))
@@ -47,7 +59,7 @@
 
 
             <div class="field">
-                <label for="password" class="col-md-4 control-label">Password</label>
+                <label for="password" class="col-md-4 control-label">Hasło:</label>
                 <input id="password" type="password" class="form-control" name="password" required>
 
                 @if ($errors->has('password'))
@@ -63,7 +75,7 @@
 
                     <input class="hidden" tabindex="0" type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}>
                     <label>
-                        Zapamiętaj mnie
+                        Zapamiętać?
                     </label>
                 </div>
             </div>
@@ -81,6 +93,13 @@
                     <a class="ui button violet app_form_button" href="{{ url('/password/reset') }}">Zapomniałeś hasła?</a>
                 </div>
 
+                <div class="column_button">
+
+                </div>
+
+                <div class="column_button">
+                    <a class="ui button blue app_form_button" href="{{ url('/register') }}">Stwórz konto!</a>
+                </div>
             </div>
         </form>
     </div>

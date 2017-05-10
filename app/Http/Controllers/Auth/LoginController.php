@@ -50,19 +50,28 @@ class LoginController extends Controller
         if(Auth::attempt($rules)) {
             $user = User::where('email', $email)->first();
             if($user->active) {
-                return redirect()->to('/login');
+                return redirect()->to('/login')->with([
+                    'message' => 'Zalogowałeś się pomyślnie!',
+                    'class' => 'succes_message'
+                ]);
+
             } else {
 
                 Auth::logout();
 
                 $user->sendAccountActivationEmail();
 
-                return redirect()->to('/login')->with('not-active', 'Konto nieaktywne');
+                return redirect()->to('/login')->with([
+                    'message' => 'Konto nieaktywne',
+                    'class' => 'error_message'
+                ]);
             }
 
         } else {
-
-            return redirect()->back()->with('login-failed', 'Logowanie nieudane');
+            return redirect()->back()->with([
+                'message' => 'Podano niepoprawne dane',
+                'class' => 'error_message'
+            ]);
         }
     }
 
