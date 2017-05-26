@@ -6,11 +6,9 @@
     text-decoration-color: yellow;
 }
 
-
-
 body {
+    transition: all 0.5s !important;
     background-image: url("../images/foggy_birds_@2X.png");
     background-repeat: repeat;
     background-color: #6666cc;
-
 }

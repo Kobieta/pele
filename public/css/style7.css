@@ -13,6 +13,7 @@
 }
 
 body {
+    transition: all 0.5s !important;
     background-image: url("../images/polonez_car.png");
     background-repeat: repeat;
     background-color: #6666cc;

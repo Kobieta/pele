@@ -1,11 +1,13 @@
 
 
+const facebookAppId = '1718864915071718';
+
 $(function() {
     // import SDK
     $.ajaxSetup({ cache: true });
     $.getScript('//connect.facebook.net/en_US/sdk.js', function(){
         FB.init({
-            appId: '1718864915071718',
+            appId: facebookAppId,
             version: 'v2.8' // or v2.1, v2.2, v2.3, ...
         });
     });
@@ -56,9 +58,7 @@ $(function() {
 
         var listLink = $('#list_link').val();
 
-        var app_id = '1718864915071718';
-
-
+        var app_id = facebookAppId;
 
         if(mobile_browser.any()) {
 

@@ -50,7 +50,7 @@ class AnswersNotificationMail extends Mailable
     {
         $this->to($this->listing_author->email);
         return
-            $this->subject('Znajomy odpowiedział na Twoją listę!')
+            $this->subject('Twój znajomy odpowiedział na Twoją listę!')
             ->view('emails.friends.answers')
             ->with([
                 'user' => $this->current_user,

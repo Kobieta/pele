@@ -49,7 +49,7 @@ class AccountActivationMail extends Mailable
     public function build()
     {
         $this->generateActivationLink();
-        return $this->subject('Aktywuj swoje konto w serwisie Epelemele')
+        return $this->subject('Aktywuj swoje konto w aplikacji Epelemele')
             ->view('emails.users.account_activation')
             ->with('activation_link', $this->activation_link);
     }

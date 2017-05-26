@@ -11,6 +11,6 @@
 
     </p>
     <p>Aby aktywować konto, kliknij poniższy link.</p>
-    <a class="main_button" href='{{ $activation_link }}'>LINK</a>
+    <a class="main_button" href='{{ $activation_link }}'>aktywuj</a>
 
 @endsection

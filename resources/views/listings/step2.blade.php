@@ -22,12 +22,12 @@
 
         {!! Form::open(['route' => 'listings.send', 'method' => 'post', 'class'=>'ownlist', 'id' => 'send_pele_email']) !!}
             <div class="ui fluid action input">
-                <input name='list_link' id="list_link" type="text" value="{{route('listings.show', [$listing->slug , $listing->id])}}">
+                <input name='list_link' id="list_link" type="text" value="{{ route('listings.show', [$listing->slug , $listing->id]) }}">
             </div>
 
             <div class="ui half_width_button fb_button button" id="facebook_sender">wyślij listę przez Facebooka</div>
 
-            <div class="ui half_width_button cpy_button button">kopiuj link do swojej listy</div>
+            <div id="listCopyButton" class="ui half_width_button cpy_button button">kopiuj link do swojej listy</div>
 
             <div id="email_sender_errors">
             </div>

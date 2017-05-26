@@ -40,7 +40,7 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    transition: 0.5s;
+    transition: all 0.5s;
 }
 
 
@@ -416,6 +416,14 @@ img.profile {
 
 
 
+.ui.toggle.checkbox input:checked~.box, .ui.toggle.checkbox input:checked~label {
+    color: #644665 !important;
+}
+
+.ui.toggle.checkbox input:focus:checked~.box, .ui.toggle.checkbox input:focus:checked~label {
+    color: #644665 !important;
+}
+
 
 /*
 
@@ -434,6 +442,18 @@ img.profile {
 .ui.toggle.checkbox input:checked~.box:before, .ui.toggle.checkbox input:checked~label:before {
     background-color: #B083B2!important;
     outline: none !important;
+}
+
+
+
+@media screen and (max-width: 1199px) {
+    #listCopyButton, #facebook_sender {
+        width: 50%;
+        float: left;
+    }
+    #email_sender_errors {
+        margin-top: 35px;
+    }
 }
 
 @media screen and (min-width: 992px) {
@@ -459,5 +479,20 @@ img.profile {
     }
     .top_info {
         font-size: 20px;
+    }
+
+    #listCopyButton, #facebook_sender {
+        width: 100%;
+        float: none;
+    }
+
+    #email_sender_errors {
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .message_panel .single_message {
+        font-size: 14px;
     }
 }
